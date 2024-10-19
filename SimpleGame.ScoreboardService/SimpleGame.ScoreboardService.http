@@ -1,0 +1,6 @@
+@SimpleGame.ScoreboardService_HostAddress = http://localhost:5206
+
+GET {{SimpleGame.ScoreboardService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
