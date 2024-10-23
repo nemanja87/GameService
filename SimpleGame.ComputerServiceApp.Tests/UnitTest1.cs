@@ -1,4 +1,4 @@
-namespace SimpleGame.ScoreboardService.Tests
+namespace SimpleGame.ComputerServiceApp.Tests
 {
     public class UnitTest1
     {
