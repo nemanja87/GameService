@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleGame.GameService\SimpleGame.GameServiceApp.csproj" />
+    <ProjectReference Include="..\SimpleGame.GameService\SimpleGame.GameService.csproj" />
   </ItemGroup>
 
 </Project>
