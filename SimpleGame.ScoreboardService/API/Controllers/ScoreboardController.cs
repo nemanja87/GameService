@@ -6,8 +6,8 @@ using SimpleGame.ScoreboardService.Core.Application.Queries.GetLastResults;
 
 namespace SimpleGame.ScoreboardService.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class ScoreboardController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -17,6 +17,11 @@ namespace SimpleGame.ScoreboardService.API.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Adds a game result to the scoreboard.
+        /// </summary>
+        /// <param name="gameResult">The game result to add.</param>
+        /// <returns>An action result indicating success or failure.</returns>
         [HttpPost("add-result")]
         public async Task<IActionResult> AddResult([FromBody] GameResultDto gameResult)
         {
@@ -25,6 +30,10 @@ namespace SimpleGame.ScoreboardService.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Retrieves the last results from the scoreboard.
+        /// </summary>
+        /// <returns>A list of the last game results.</returns>
         [HttpGet("last-results")]
         public async Task<IActionResult> GetLastResults()
         {

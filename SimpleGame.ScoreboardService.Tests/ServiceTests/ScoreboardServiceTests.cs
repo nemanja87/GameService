@@ -1,14 +1,18 @@
-﻿using SimpleGame.ScoreboardService.Core.Application.Dtos;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using SimpleGame.ScoreboardService.Core.Application.Dtos;
 
 namespace SimpleGame.ScoreboardService.Tests.ServiceTests
 {
     public class ScoreboardServiceTests
     {
         private readonly Core.Application.Services.ScoreboardService _scoreboardService;
+        private readonly Mock<ILogger<Core.Application.Services.ScoreboardService>> _loggerMock;
 
         public ScoreboardServiceTests()
         {
-            _scoreboardService = new Core.Application.Services.ScoreboardService();
+            _loggerMock = new Mock<ILogger<Core.Application.Services.ScoreboardService>>();
+            _scoreboardService = new Core.Application.Services.ScoreboardService(_loggerMock.Object);
         }
 
         [Fact]

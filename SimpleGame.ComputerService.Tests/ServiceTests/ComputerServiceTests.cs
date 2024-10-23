@@ -1,4 +1,6 @@
-﻿using SimpleGame.ComputerService.Core.Application.Services;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using SimpleGame.ComputerService.Core.Application.Services;
 using SimpleGame.ComputerService.Core.Domain.Enum;
 
 namespace SimpleGame.ComputerService.Tests.ServiceTests
@@ -6,10 +8,15 @@ namespace SimpleGame.ComputerService.Tests.ServiceTests
     public class ComputerChoiceServiceTests
     {
         private readonly ComputerChoiceService _computerChoiceService;
+        private readonly Mock<ILogger<ComputerChoiceService>> _loggerMock;
 
         public ComputerChoiceServiceTests()
         {
-            _computerChoiceService = new ComputerChoiceService();  // No need to mock as it doesn't depend on external services
+            // Mock the logger
+            _loggerMock = new Mock<ILogger<ComputerChoiceService>>();
+
+            // Inject the mock logger into the service
+            _computerChoiceService = new ComputerChoiceService(_loggerMock.Object);
         }
 
         [Fact]

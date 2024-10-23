@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
 using SimpleGame.ScoreboardService.Core.Application.Commands.AddScore;
 using SimpleGame.ScoreboardService.Core.Application.Dtos;
 using SimpleGame.ScoreboardService.Core.Domain.Interfaces;
@@ -8,15 +9,17 @@ namespace SimpleGame.ScoreboardService.Tests.CommandTests
     public class AddScoreCommandHandlerTests
     {
         private readonly Mock<IScoreboardService> _scoreboardServiceMock;
+        private readonly Mock<ILogger<AddScoreCommandHandler>> _loggerMock;  // Logger mock
         private readonly AddScoreCommandHandler _handler;
 
         public AddScoreCommandHandlerTests()
         {
             // Mock the IScoreboardService dependency
             _scoreboardServiceMock = new Mock<IScoreboardService>();
+            _loggerMock = new Mock<ILogger<AddScoreCommandHandler>>();  // Initialize logger mock
 
             // Initialize the command handler with the mocked service
-            _handler = new AddScoreCommandHandler(_scoreboardServiceMock.Object);
+            _handler = new AddScoreCommandHandler(_scoreboardServiceMock.Object, _loggerMock.Object);
         }
 
         [Fact]

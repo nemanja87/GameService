@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
 using SimpleGame.GameService.Core.Application.Clients.Services;
 using SimpleGame.GameService.Core.Application.Commands.PlayGame;
 using SimpleGame.GameService.Core.Application.Dtos;
@@ -13,6 +14,7 @@ namespace SimpleGame.GameService.Tests.CommandTests
         private readonly Mock<IGameLogicService> _gameServiceMock;
         private readonly Mock<IComputerServiceClient> _computerServiceClientMock;
         private readonly Mock<IScoreboardServiceClient> _scoreboardServiceClientMock;
+        private readonly Mock<ILogger<PlayGameCommandHandler>> _loggerMock;
         private readonly PlayGameCommandHandler _handler;
 
         public PlayGameCommandHandlerTests()
@@ -21,12 +23,14 @@ namespace SimpleGame.GameService.Tests.CommandTests
             _gameServiceMock = new Mock<IGameLogicService>();
             _computerServiceClientMock = new Mock<IComputerServiceClient>();
             _scoreboardServiceClientMock = new Mock<IScoreboardServiceClient>();
+            _loggerMock = new Mock<ILogger<PlayGameCommandHandler>>();
 
             // Initialize the handler with the mocked services
             _handler = new PlayGameCommandHandler(
                 _gameServiceMock.Object,
                 _computerServiceClientMock.Object,
-                _scoreboardServiceClientMock.Object
+                _scoreboardServiceClientMock.Object,
+                _loggerMock.Object
             );
         }
 
@@ -75,6 +79,16 @@ namespace SimpleGame.GameService.Tests.CommandTests
                 r.Result == result.Result &&
                 (r.Timestamp - expectedTimestamp).TotalSeconds < 1
             )), Times.Once);
+
+            // Verify logging occurred during the handling process
+            _loggerMock.Verify(
+                x => x.Log(
+                    LogLevel.Information,
+                    It.IsAny<EventId>(),
+                    It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Handling PlayGameCommand")),
+                    null,
+                    It.IsAny<Func<It.IsAnyType, Exception, string>>()
+                ), Times.Once);
         }
     }
 }

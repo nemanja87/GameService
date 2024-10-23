@@ -1,38 +1,45 @@
-﻿using Moq;
-using SimpleGame.ComputerService.Core.Application.Queries.AddComputerChoice;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using SimpleGame.ComputerService.Core.Application.Services;
 using SimpleGame.ComputerService.Core.Domain.Enum;
-using SimpleGame.ComputerService.Core.Domain.Interfaces;
 
 namespace SimpleGame.ComputerService.Tests.QueryTests
 {
-    public class GetComputerChoiceCommandHandlerTests
+    public class ComputerChoiceServiceTests
     {
-        private readonly Mock<IComputerChoiceService> _computerChoiceServiceMock;
-        private readonly GetComputerChoiceCommandHandler _handler;
+        private readonly ComputerChoiceService _computerChoiceService;
+        private readonly Mock<ILogger<ComputerChoiceService>> _loggerMock;
 
-        public GetComputerChoiceCommandHandlerTests()
+        public ComputerChoiceServiceTests()
         {
-            _computerChoiceServiceMock = new Mock<IComputerChoiceService>();
-            _handler = new GetComputerChoiceCommandHandler(_computerChoiceServiceMock.Object);
+            // Mock the logger
+            _loggerMock = new Mock<ILogger<ComputerChoiceService>>();
+
+            // Inject the mock logger into the service
+            _computerChoiceService = new ComputerChoiceService(_loggerMock.Object);
         }
 
         [Fact]
-        public async Task Handle_Returns_Valid_ComputerChoiceDto()
+        public async Task GetRandomComputerChoiceAsync_ReturnsValidChoice()
         {
-            // Arrange
-            var expectedChoice = ComputerChoiceEnum.Rock; // Assume enum value for this example
-            _computerChoiceServiceMock.Setup(service => service.GetRandomComputerChoiceAsync())
-                                      .ReturnsAsync(expectedChoice);
-
-            var command = new GetComputerChoiceCommand();
-
             // Act
-            var result = await _handler.Handle(command, CancellationToken.None);
+            var result = await _computerChoiceService.GetRandomComputerChoiceAsync();
 
             // Assert
-            Assert.NotNull(result);
-            Assert.Equal((int)expectedChoice, result.Id);
-            Assert.Equal(expectedChoice.ToString(), result.Name);
+            Assert.True(result >= ComputerChoiceEnum.Rock && result <= ComputerChoiceEnum.Spock);
+        }
+
+        [Fact]
+        public async Task GetRandomComputerChoiceAsync_ReturnsValuesWithinEnumRange()
+        {
+            // Act & Assert
+            for (int i = 0; i < 100; i++)  // Perform the test multiple times to ensure all values are in range
+            {
+                var result = await _computerChoiceService.GetRandomComputerChoiceAsync();
+
+                // Ensure that the random choice is a valid value in the ComputerChoiceEnum range
+                Assert.True(Enum.IsDefined(typeof(ComputerChoiceEnum), result));
+            }
         }
     }
 }

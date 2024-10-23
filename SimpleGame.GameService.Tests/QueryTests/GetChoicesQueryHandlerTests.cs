@@ -1,4 +1,6 @@
-﻿using SimpleGame.GameService.Core.Application.Dtos;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using SimpleGame.GameService.Core.Application.Dtos;
 using SimpleGame.GameService.Core.Application.Queries.GetChoices;
 using SimpleGame.GameService.Core.Domain.Enums;
 
@@ -6,11 +8,13 @@ namespace SimpleGame.GameService.Tests.QueryTests
 {
     public class GetChoicesQueryHandlerTests
     {
+        private readonly Mock<ILogger<GetChoicesQueryHandler>> _loggerMock;
         private readonly GetChoicesQueryHandler _handler;
 
         public GetChoicesQueryHandlerTests()
         {
-            _handler = new GetChoicesQueryHandler();
+            _loggerMock = new Mock<ILogger<GetChoicesQueryHandler>>();
+            _handler = new GetChoicesQueryHandler(_loggerMock.Object);
         }
 
         [Fact]

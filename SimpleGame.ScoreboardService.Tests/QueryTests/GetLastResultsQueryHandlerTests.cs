@@ -1,46 +1,54 @@
-﻿using Moq;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
 using SimpleGame.ScoreboardService.Core.Application.Dtos;
-using SimpleGame.ScoreboardService.Core.Application.Queries.GetLastResults;
-using SimpleGame.ScoreboardService.Core.Domain.Interfaces;
 
 namespace SimpleGame.ScoreboardService.Tests.QueryTests
 {
-    public class GetLastResultsQueryHandlerTests
+    public class ScoreboardServiceTests
     {
-        private readonly Mock<IScoreboardService> _scoreboardServiceMock;
-        private readonly GetLastResultsQueryHandler _handler;
+        private readonly Core.Application.Services.ScoreboardService _scoreboardService;
+        private readonly Mock<ILogger<Core.Application.Services.ScoreboardService>> _loggerMock;  // Logger mock
 
-        public GetLastResultsQueryHandlerTests()
+        public ScoreboardServiceTests()
         {
-            // Mock the IScoreboardService dependency
-            _scoreboardServiceMock = new Mock<IScoreboardService>();
-
-            // Initialize the query handler with the mocked service
-            _handler = new GetLastResultsQueryHandler(_scoreboardServiceMock.Object);
+            _loggerMock = new Mock<ILogger<Core.Application.Services.ScoreboardService>>();  // Initialize logger mock
+            _scoreboardService = new Core.Application.Services.ScoreboardService(_loggerMock.Object);
         }
 
         [Fact]
-        public async Task Handle_Should_Return_Last_Results_From_ScoreboardService()
+        public void AddResult_Should_Add_Result_To_Queue()
         {
             // Arrange
-            var expectedResults = new List<GameResultDto>
-            {
-                new GameResultDto { PlayerChoice = "Rock", ComputerChoice = "Scissors", Result = "Win" },
-                new GameResultDto { PlayerChoice = "Paper", ComputerChoice = "Rock", Result = "Win" }
-            };
-
-            _scoreboardServiceMock
-                .Setup(s => s.GetLastResults())
-                .Returns(expectedResults);
-
-            var query = new GetLastResultsQuery();
+            var gameResult = new GameResultDto { PlayerChoice = "Rock", ComputerChoice = "Scissors", Result = "Win" };
 
             // Act
-            var results = await _handler.Handle(query, CancellationToken.None);
+            _scoreboardService.AddResult(gameResult);
+            var results = _scoreboardService.GetLastResults();
 
             // Assert
-            Assert.Equal(expectedResults.Count, results.Count());
-            Assert.Equal(expectedResults, results);
+            Assert.Single(results);
+            Assert.Contains(gameResult, results);
+        }
+
+        [Fact]
+        public void AddResult_Should_Remove_Oldest_If_Queue_Exceeds_Limit()
+        {
+            // Arrange
+            for (int i = 0; i < 10; i++)
+            {
+                _scoreboardService.AddResult(new GameResultDto { PlayerChoice = "Choice" + i, ComputerChoice = "Computer" + i, Result = "Result" + i });
+            }
+
+            var newGameResult = new GameResultDto { PlayerChoice = "Rock", ComputerChoice = "Scissors", Result = "Win" };
+
+            // Act
+            _scoreboardService.AddResult(newGameResult);
+            var results = _scoreboardService.GetLastResults();
+
+            // Assert
+            Assert.Equal(10, results.Count());  // Ensure the queue size stays at 10
+            Assert.DoesNotContain(results, r => r.PlayerChoice == "Choice0");  // Oldest element (Choice0) should be removed
+            Assert.Contains(newGameResult, results);
         }
     }
 }

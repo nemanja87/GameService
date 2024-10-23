@@ -8,20 +8,34 @@ namespace SimpleGame.GameService.Core.Infrastructure.Services.ScoreboardServices
     public class ScoreboardServiceClient : IScoreboardServiceClient
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<ScoreboardServiceClient> _logger;
 
-        public ScoreboardServiceClient(HttpClient httpClient)
+        public ScoreboardServiceClient(HttpClient httpClient, ILogger<ScoreboardServiceClient> logger)
         {
             _httpClient = httpClient;
+            _logger = logger;
         }
 
         public async Task SaveGameResult(GameResultDto gameResultDto)
         {
-            var jsonContent = JsonConvert.SerializeObject(gameResultDto);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            _logger.LogInformation("Sending game result to Scoreboard Service. PlayerChoice: {PlayerChoice}, Result: {Result}", gameResultDto.PlayerChoice, gameResultDto.Result);
 
-            var response = await _httpClient.PostAsync("/api/Scoreboard/add-result", content);
+            try
+            {
+                var jsonContent = JsonConvert.SerializeObject(gameResultDto);
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-            response.EnsureSuccessStatusCode();
+                var response = await _httpClient.PostAsync("/api/Scoreboard/add-result", content);
+
+                response.EnsureSuccessStatusCode();
+
+                _logger.LogInformation("Successfully saved game result to the Scoreboard Service.");
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex, "Failed to save game result to the Scoreboard Service.");
+                throw;
+            }
         }
     }
 }
