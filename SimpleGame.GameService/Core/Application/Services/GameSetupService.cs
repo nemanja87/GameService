@@ -1,8 +1,8 @@
-﻿using SimpleGame.GameServiceApp.Core.Application.Clients.Services;
-using SimpleGame.GameServiceApp.Core.Domain.Interfaces;
-using SimpleGame.GameServiceApp.Core.Domain.Models;
+﻿using SimpleGame.GameService.Core.Application.Clients.Services;
+using SimpleGame.GameService.Core.Domain.Interfaces;
+using SimpleGame.GameService.Core.Domain.Models;
 
-namespace SimpleGame.GameServiceApp.Core.Application.Services
+namespace SimpleGame.GameService.Core.Application.Services
 {
     public class GameSetupService : IGameSetupService
     {

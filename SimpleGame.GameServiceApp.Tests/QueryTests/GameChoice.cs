@@ -1,4 +1,4 @@
-﻿namespace SimpleGame.GameServiceApp.Tests.QueryTests
+﻿namespace SimpleGame.GameService.Tests.QueryTests
 {
     internal class GameChoice
     {

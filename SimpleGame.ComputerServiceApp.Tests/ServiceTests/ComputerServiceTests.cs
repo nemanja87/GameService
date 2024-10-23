@@ -1,5 +1,5 @@
-﻿using SimpleGame.ComputerServiceApp.Core.Application.Services;
-using SimpleGame.ComputerServiceApp.Core.Domain.Enum;
+﻿using SimpleGame.ComputerService.Core.Application.Services;
+using SimpleGame.ComputerService.Core.Domain.Enum;
 
 namespace SimpleGame.ComputerServiceApp.Tests.ServiceTests
 {

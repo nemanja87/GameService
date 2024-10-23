@@ -1,4 +1,4 @@
-﻿namespace SimpleGame.ComputerServiceApp.Core.Domain.Enum
+﻿namespace SimpleGame.ComputerService.Core.Domain.Enum
 {
     public enum ComputerChoiceEnum
     {

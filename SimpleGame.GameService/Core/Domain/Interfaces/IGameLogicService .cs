@@ -1,7 +1,7 @@
-﻿using SimpleGame.GameServiceApp.Core.Domain.Enums;
-using SimpleGame.GameServiceApp.Core.Domain.Models;
+﻿using SimpleGame.GameService.Core.Domain.Enums;
+using SimpleGame.GameService.Core.Domain.Models;
 
-namespace SimpleGame.GameServiceApp.Core.Domain.Interfaces
+namespace SimpleGame.GameService.Core.Domain.Interfaces
 {
     public interface IGameLogicService
     {

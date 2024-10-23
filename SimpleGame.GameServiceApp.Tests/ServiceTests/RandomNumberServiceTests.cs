@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Moq;
 using Moq.Protected;
-using SimpleGame.GameServiceApp.Core.Application.Services;
+using SimpleGame.GameService.Core.Application.Services;
 using System.Net;
 
-namespace SimpleGame.GameServiceApp.Tests.ServiceTests
+namespace SimpleGame.GameService.Tests.ServiceTests
 {
     public class RandomNumberServiceTests
     {

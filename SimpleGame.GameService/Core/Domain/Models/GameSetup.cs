@@ -1,4 +1,4 @@
-﻿namespace SimpleGame.GameServiceApp.Core.Domain.Models
+﻿namespace SimpleGame.GameService.Core.Domain.Models
 {
     public class GameSetup
     {

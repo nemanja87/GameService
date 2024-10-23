@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using SimpleGame.GameServiceApp.Core.Application.Dtos;
-using SimpleGame.GameServiceApp.Core.Domain.Interfaces;
+using SimpleGame.GameService.Core.Application.Dtos;
+using SimpleGame.GameService.Core.Domain.Interfaces;
 
-namespace SimpleGame.GameServiceApp.Core.Application.Services
+namespace SimpleGame.GameService.Core.Application.Services
 {
     public class RandomNumberService : IRandomNumberService
     {

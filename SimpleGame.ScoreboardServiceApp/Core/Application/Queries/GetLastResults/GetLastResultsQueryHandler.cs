@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using SimpleGame.ScoreboardServiceApp.Core.Application.Dtos;
-using SimpleGame.ScoreboardServiceApp.Core.Domain.Interfaces;
+using SimpleGame.ScoreboardService.Core.Application.Dtos;
+using SimpleGame.ScoreboardService.Core.Domain.Interfaces;
 
-namespace SimpleGame.ScoreboardServiceApp.Core.Application.Queries.GetLastResults
+namespace SimpleGame.ScoreboardService.Core.Application.Queries.GetLastResults
 {
     public class GetLastResultsQueryHandler : IRequestHandler<GetLastResultsQuery, IEnumerable<GameResultDto>>
     {

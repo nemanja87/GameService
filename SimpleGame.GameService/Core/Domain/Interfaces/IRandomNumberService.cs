@@ -1,4 +1,4 @@
-﻿namespace SimpleGame.GameServiceApp.Core.Domain.Interfaces
+﻿namespace SimpleGame.GameService.Core.Domain.Interfaces
 {
     public interface IRandomNumberService
     {

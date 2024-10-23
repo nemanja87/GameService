@@ -1,4 +1,4 @@
-﻿namespace SimpleGame.ComputerServiceApp.Core.Application.Dtos
+﻿namespace SimpleGame.ComputerService.Core.Application.Dtos
 {
     public class ComputerChoiceDto
     {

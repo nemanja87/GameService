@@ -1,5 +1,6 @@
 ﻿using MediatR;
-using SimpleGame.ScoreboardServiceApp.Core.Domain.Interfaces;
+using SimpleGame.ScoreboardService.Core.Application.Commands.AddScore;
+using SimpleGame.ScoreboardService.Core.Domain.Interfaces;
 
 namespace SimpleGame.ScoreboardServiceApp.Core.Application.Commands.AddScore;
 

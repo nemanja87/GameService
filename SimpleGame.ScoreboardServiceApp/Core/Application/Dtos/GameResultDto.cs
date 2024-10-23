@@ -1,4 +1,4 @@
-﻿namespace SimpleGame.ScoreboardServiceApp.Core.Application.Dtos
+﻿namespace SimpleGame.ScoreboardService.Core.Application.Dtos
 {
     public class GameResultDto
     {

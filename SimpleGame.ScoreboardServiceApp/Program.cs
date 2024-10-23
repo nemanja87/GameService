@@ -1,5 +1,5 @@
-using SimpleGame.ScoreboardServiceApp.Core.Application.Services;
-using SimpleGame.ScoreboardServiceApp.Core.Domain.Interfaces;
+using SimpleGame.ScoreboardService.Core.Application.Services;
+using SimpleGame.ScoreboardService.Core.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

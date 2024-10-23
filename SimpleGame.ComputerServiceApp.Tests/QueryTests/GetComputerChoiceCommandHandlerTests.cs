@@ -1,8 +1,7 @@
 ﻿using Moq;
-using SimpleGame.ComputerServiceApp.Core.Application.Queries;
-using SimpleGame.ComputerServiceApp.Core.Application.Queries.AddComputerChoice;
-using SimpleGame.ComputerServiceApp.Core.Domain.Enum;
-using SimpleGame.ComputerServiceApp.Core.Domain.Interfaces;
+using SimpleGame.ComputerService.Core.Application.Queries.AddComputerChoice;
+using SimpleGame.ComputerService.Core.Domain.Enum;
+using SimpleGame.ComputerService.Core.Domain.Interfaces;
 
 namespace SimpleGame.ComputerServiceApp.Tests.QueryTests
 {

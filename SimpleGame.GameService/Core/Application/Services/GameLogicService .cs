@@ -1,10 +1,9 @@
-﻿using SimpleGame.GameServiceApp.Core.Domain.Enums;
-using SimpleGame.GameServiceApp.Core.Domain.Interfaces;
-using SimpleGame.GameServiceApp.Core.Domain.Models;
+﻿using SimpleGame.GameService.Core.Domain.Enums;
+using SimpleGame.GameService.Core.Domain.Interfaces;
+using SimpleGame.GameService.Core.Domain.Models;
 
-namespace SimpleGame.GameServiceApp.Core.Application.Services
+namespace SimpleGame.GameService.Core.Application.Services
 {
-
     public class GameLogicService : IGameLogicService
     {
         public GameResult Play(GameChoiceEnum playerChoice, GameChoiceEnum computerChoice)

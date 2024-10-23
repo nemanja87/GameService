@@ -1,6 +1,6 @@
-﻿using SimpleGame.ComputerServiceApp.Core.Domain.Enum;
+﻿using SimpleGame.ComputerService.Core.Domain.Enum;
 
-namespace SimpleGame.ComputerServiceApp.Core.Domain.Interfaces
+namespace SimpleGame.ComputerService.Core.Domain.Interfaces
 {
     public interface IComputerChoiceService
     {

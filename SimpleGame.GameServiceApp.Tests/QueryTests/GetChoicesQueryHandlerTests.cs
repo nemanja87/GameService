@@ -1,8 +1,8 @@
-﻿using SimpleGame.GameServiceApp.Core.Application.Dtos;
-using SimpleGame.GameServiceApp.Core.Application.Queries.GetChoices;
-using SimpleGame.GameServiceApp.Core.Domain.Enums;
+﻿using SimpleGame.GameService.Core.Application.Dtos;
+using SimpleGame.GameService.Core.Application.Queries.GetChoices;
+using SimpleGame.GameService.Core.Domain.Enums;
 
-namespace SimpleGame.GameServiceApp.Tests.QueryTests
+namespace SimpleGame.GameService.Tests.QueryTests
 {
     public class GetChoicesQueryHandlerTests
     {

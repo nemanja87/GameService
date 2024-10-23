@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SimpleGame.ComputerServiceApp.Core.Application.Queries.AddComputerChoice;
+using SimpleGame.ComputerService.Core.Application.Queries.AddComputerChoice;
 
-namespace SimpleGame.ComputerServiceApp.API.Controllers
+namespace SimpleGame.ComputerService.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,7 +1,7 @@
-﻿using SimpleGame.ScoreboardServiceApp.Core.Application.Dtos;
-using SimpleGame.ScoreboardServiceApp.Core.Domain.Interfaces;
+﻿using SimpleGame.ScoreboardService.Core.Application.Dtos;
+using SimpleGame.ScoreboardService.Core.Domain.Interfaces;
 
-namespace SimpleGame.ScoreboardServiceApp.Core.Application.Services
+namespace SimpleGame.ScoreboardService.Core.Application.Services
 {
     public class ScoreboardService : IScoreboardService
     {

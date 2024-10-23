@@ -1,6 +1,6 @@
-﻿using SimpleGame.GameServiceApp.Core.Domain.Enums;
+﻿using SimpleGame.GameService.Core.Domain.Enums;
 
-namespace SimpleGame.GameServiceApp.Core.Domain.Models
+namespace SimpleGame.GameService.Core.Domain.Models
 {
     public class GameResult(GameChoiceEnum playerChoice, GameChoiceEnum computerChoice, GameResultEnum result)
     {

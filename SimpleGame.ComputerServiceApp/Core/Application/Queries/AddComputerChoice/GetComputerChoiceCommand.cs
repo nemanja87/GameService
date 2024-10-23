@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SimpleGame.ComputerServiceApp.Core.Application.Dtos;
+using SimpleGame.ComputerService.Core.Application.Dtos;
 
-namespace SimpleGame.ComputerServiceApp.Core.Application.Queries.AddComputerChoice;
+namespace SimpleGame.ComputerService.Core.Application.Queries.AddComputerChoice;
 
 public class GetComputerChoiceCommand : IRequest<ComputerChoiceDto>
 {

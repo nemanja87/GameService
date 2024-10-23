@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SimpleGame.GameServiceApp.Core.Application.Dtos;
+using SimpleGame.GameService.Core.Application.Dtos;
 
-namespace SimpleGame.GameServiceApp.Core.Application.Queries.GetChoices
+namespace SimpleGame.GameService.Core.Application.Queries.GetChoices
 {
     public class GetChoicesQuery : IRequest<List<GameChoiceDto>>
     {

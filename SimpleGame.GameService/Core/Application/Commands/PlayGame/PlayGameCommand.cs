@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using SimpleGame.GameServiceApp.Core.Application.Dtos;
-using SimpleGame.GameServiceApp.Core.Domain.Enums;
+using SimpleGame.GameService.Core.Application.Dtos;
+using SimpleGame.GameService.Core.Domain.Enums;
 
-namespace SimpleGame.GameServiceApp.Core.Application.Commands.PlayGame
+namespace SimpleGame.GameService.Core.Application.Commands.PlayGame
 {
     public class PlayGameCommand : IRequest<GameResultDto>
     {

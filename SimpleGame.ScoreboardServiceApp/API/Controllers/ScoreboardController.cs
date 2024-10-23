@@ -1,12 +1,10 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SimpleGame.ScoreboardServiceApp.Core.Application.Commands;
-using SimpleGame.ScoreboardServiceApp.Core.Application.Commands.AddScore;
-using SimpleGame.ScoreboardServiceApp.Core.Application.Dtos;
-using SimpleGame.ScoreboardServiceApp.Core.Application.Queries.GetLastResults;
+using SimpleGame.ScoreboardService.Core.Application.Commands.AddScore;
+using SimpleGame.ScoreboardService.Core.Application.Dtos;
+using SimpleGame.ScoreboardService.Core.Application.Queries.GetLastResults;
 
-namespace SimpleGame.ScoreboardServiceApp.API.Controllers
+namespace SimpleGame.ScoreboardService.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

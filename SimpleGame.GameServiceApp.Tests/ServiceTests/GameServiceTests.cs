@@ -1,7 +1,7 @@
-﻿using SimpleGame.GameServiceApp.Core.Application.Services;
-using SimpleGame.GameServiceApp.Core.Domain.Enums;
+﻿using SimpleGame.GameService.Core.Application.Services;
+using SimpleGame.GameService.Core.Domain.Enums;
 
-namespace SimpleGame.GameServiceApp.Tests.ServiceTests
+namespace SimpleGame.GameService.Tests.ServiceTests
 {
     public class GameServiceTests
     {

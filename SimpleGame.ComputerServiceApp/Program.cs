@@ -1,5 +1,5 @@
-using SimpleGame.ComputerServiceApp.Core.Application.Services;
-using SimpleGame.ComputerServiceApp.Core.Domain.Interfaces;
+using SimpleGame.ComputerService.Core.Application.Services;
+using SimpleGame.ComputerService.Core.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

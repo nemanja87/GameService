@@ -1,4 +1,4 @@
-﻿namespace SimpleGame.GameServiceApp.Core.Domain.Enums
+﻿namespace SimpleGame.GameService.Core.Domain.Enums
 {
     public enum GameResultEnum
     {

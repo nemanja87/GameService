@@ -1,45 +1,26 @@
-using SimpleGame.GameServiceApp.Core.Application.Clients.Services;
-using SimpleGame.GameServiceApp.Core.Application.Services;
-using SimpleGame.GameServiceApp.Core.Domain.Interfaces;
-using SimpleGame.GameServiceApp.Core.Infrastructure.Services.ComputerServices;
+using SimpleGame.GameService.Core.Infrastructure.Extensions;
+using SimpleGame.GameService.Core.Application.Services;
+using SimpleGame.GameService.Core.Domain.Interfaces;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
-
-// Register MediatR for CQRS
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-
-// Register GameSetupService
-builder.Services.AddScoped<IGameSetupService, GameSetupService>();
-
-// Register GameLogicService
-builder.Services.AddScoped<IGameLogicService, GameLogicService>();
-
-// Configure HttpClient with the Random Number API base URL
-builder.Services.AddHttpClient<IRandomNumberService, RandomNumberService>(client =>
-{
-    var randomNumberApiUrl = builder.Configuration["RandomNumberApiUrl"];
-    client.BaseAddress = new Uri(randomNumberApiUrl);
-});
-
-builder.Services.AddHttpClient<IComputerServiceClient, ComputerServiceClient>(client =>
-{
-    var baseUrl = builder.Configuration["ComputerService:BaseUrl"];
-    if (string.IsNullOrEmpty(baseUrl))
-    {
-        throw new InvalidOperationException("ComputerService BaseUrl is not configured");
-    }
-    client.BaseAddress = new Uri(baseUrl);
-});
-
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
+
+// Register MediatR for CQRS
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+// Register Application Services
+builder.Services.AddScoped<IGameSetupService, GameSetupService>();
+builder.Services.AddScoped<IGameLogicService, GameLogicService>();
+
+// Configure HttpClients from the extension method
+builder.Services.ConfigureHttpClients(builder.Configuration);
 
 // Add Swagger for API documentation
 builder.Services.AddEndpointsApiExplorer();
@@ -48,11 +29,11 @@ builder.Services.AddSwaggerGen();
 // (Optional) Add CORS if needed
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddDefaultPolicy(policy =>
     {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
 });
 

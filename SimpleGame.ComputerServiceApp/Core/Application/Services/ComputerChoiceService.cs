@@ -1,7 +1,7 @@
-﻿using SimpleGame.ComputerServiceApp.Core.Domain.Enum;
-using SimpleGame.ComputerServiceApp.Core.Domain.Interfaces;
+﻿using SimpleGame.ComputerService.Core.Domain.Interfaces;
+using SimpleGame.ComputerService.Core.Domain.Enum;
 
-namespace SimpleGame.ComputerServiceApp.Core.Application.Services
+namespace SimpleGame.ComputerService.Core.Application.Services
 {
     public class ComputerChoiceService : IComputerChoiceService
     {
@@ -12,7 +12,7 @@ namespace SimpleGame.ComputerServiceApp.Core.Application.Services
         public Task<ComputerChoiceEnum> GetRandomComputerChoiceAsync()
         {
             var random = new Random();
-            var randomChoice = (ComputerChoiceEnum)(random.Next(1, 6));  // Generates a random number between 1 and 5
+            var randomChoice = (ComputerChoiceEnum)random.Next(1, 6);  // Generates a random number between 1 and 5
             return Task.FromResult(randomChoice);
         }
     }

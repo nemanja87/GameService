@@ -1,4 +1,4 @@
-﻿namespace SimpleGame.GameServiceApp.Core.Application.Dtos
+﻿namespace SimpleGame.GameService.Core.Application.Dtos
 {
     public class GameChoiceDto
     {

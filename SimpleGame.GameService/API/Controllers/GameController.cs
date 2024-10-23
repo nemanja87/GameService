@@ -1,52 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SimpleGame.GameServiceApp.Core.Application.Clients.Services;
-using SimpleGame.GameServiceApp.Core.Application.Dtos;
-using SimpleGame.GameServiceApp.Core.Domain.Enums;
-using SimpleGame.GameServiceApp.Core.Domain.Interfaces;
-using SimpleGame.GameServiceApp.Core.Domain.Models;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SimpleGame.GameService.Core.Application.Clients.Services;
+using SimpleGame.GameService.Core.Application.Commands.PlayGame;
+using SimpleGame.GameService.Core.Domain.Enums;
+using SimpleGame.GameService.Core.Domain.Interfaces;
+using SimpleGame.GameService.Core.Domain.Models;
 
-namespace SimpleGame.GameServiceApp.API.Controllers
+namespace SimpleGame.GameService.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class GameController : ControllerBase
     {
-        private readonly IGameSetupService _gameSetupService;
-        private readonly IGameLogicService _gameLogicService;
-        private readonly IComputerServiceClient _computerServiceClient;
+        private readonly IMediator _mediator;
         private readonly ILogger<GameController> _logger;
 
 
-        public GameController(IComputerServiceClient computerServiceClient, IGameSetupService gameSetupService, IGameLogicService gameLogicService, ILogger<GameController> logger)
+        public GameController(IMediator mediator, ILogger<GameController> logger)
         {
-            _gameSetupService = gameSetupService;
-            _gameLogicService = gameLogicService;
-            _computerServiceClient = computerServiceClient;
+            _mediator = mediator;
             _logger = logger;
-        }
-
-        /// <summary>
-        /// Initializes the game by fetching computer details and setting up the game environment.
-        /// </summary>
-        /// <param name="computerId">The ID of the computer to fetch details from the ComputerService.</param>
-        /// <returns>Returns the game setup details including computer specifications and default game settings.</returns>
-        /// <response code="200">Returns the game setup details successfully.</response>
-        /// <response code="500">If there was an error while fetching computer details or initializing the game.</response>
-        [HttpPost("initialize")]
-        [ProducesResponseType(typeof(GameSetup), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Produces("application/json")]
-        public async Task<IActionResult> InitializeGame([FromBody] int computerId)
-        {
-            try
-            {
-                var gameSetup = await _gameSetupService.InitializeGameAsync(computerId);
-                return Ok(gameSetup);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
         }
 
         /// <summary>
@@ -60,25 +33,17 @@ namespace SimpleGame.GameServiceApp.API.Controllers
         [ProducesResponseType(typeof(GameResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Produces("application/json")]
-        public IActionResult PlayGame([FromBody] GameChoiceEnum playerChoice)
+        public async Task<IActionResult> PlayGame([FromBody] GameChoiceEnum playerChoice)
         {
             try
             {
-                // Fetch the computer's choice from ComputerService
-                var computerDetails = _computerServiceClient.GetComputerDetailsAsync(0).Result;
-                GameChoiceEnum computerChoice = MapToGameChoiceEnum(computerDetails.Name);
-
-                var gameResult = _gameLogicService.Play(playerChoice, computerChoice);
-
-                // Map to DTO for string representation
-                var resultDto = new GameResultDto
+                // Create and send the PlayGameCommand to MediatR
+                var result = await _mediator.Send(new PlayGameCommand
                 {
-                    PlayerChoice = playerChoice.ToString(),
-                    ComputerChoice = computerChoice.ToString(),
-                    Result = gameResult.Result.ToString()
-                };
+                    PlayerChoice = playerChoice
+                });
 
-                return Ok(resultDto);
+                return Ok(result);  // Return the result from the handler
             }
             catch (Exception ex)
             {
