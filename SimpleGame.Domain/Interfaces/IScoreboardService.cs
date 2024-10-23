@@ -1,0 +1,11 @@
+﻿using SimpleGame.Domain.Models;
+
+namespace SimpleGame.Domain.Interfaces
+{
+    public interface IScoreboardService
+    {
+        Task AddResultAsync(GameResult result);
+        Task<List<GameResult>> GetRecentResultsAsync();
+        Task ResetScoreboardAsync();
+    }
+}
