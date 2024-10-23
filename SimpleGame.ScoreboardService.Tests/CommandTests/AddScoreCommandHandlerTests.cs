@@ -2,7 +2,6 @@
 using SimpleGame.ScoreboardService.Core.Application.Commands.AddScore;
 using SimpleGame.ScoreboardService.Core.Application.Dtos;
 using SimpleGame.ScoreboardService.Core.Domain.Interfaces;
-using SimpleGame.ScoreboardServiceApp.Core.Application.Commands.AddScore;
 
 namespace SimpleGame.ScoreboardService.Tests.CommandTests
 {

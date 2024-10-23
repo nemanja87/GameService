@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\SimpleGame.ComputerService\SimpleGame.ComputerService.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleGame.ComputerServiceApp\SimpleGame.ComputerService.csproj" />
+    <Using Include="Xunit" />
   </ItemGroup>
 
 </Project>

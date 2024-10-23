@@ -5,17 +5,17 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.GameService", "SimpleGame.GameService\SimpleGame.GameService.csproj", "{1620549E-233A-4740-8506-93A40B62FF0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.ScoreboardService", "SimpleGame.ScoreboardServiceApp\SimpleGame.ScoreboardService.csproj", "{A7542262-5D0E-4392-90B8-58DB05754016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.ScoreboardService", "SimpleGame.ScoreboardService\SimpleGame.ScoreboardService.csproj", "{A7542262-5D0E-4392-90B8-58DB05754016}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.ComputerService", "SimpleGame.ComputerServiceApp\SimpleGame.ComputerService.csproj", "{47CE0467-E92B-454F-81B0-5F300689D0AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.ComputerService", "SimpleGame.ComputerService\SimpleGame.ComputerService.csproj", "{47CE0467-E92B-454F-81B0-5F300689D0AD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{988D2E75-5A18-4763-955B-55AA16D5D049}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BA97ADEB-8CA5-497D-B710-3787E8EFDECB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.GameService.Tests", "SimpleGame.GameServiceApp.Tests\SimpleGame.GameService.Tests.csproj", "{1D2F77BF-437F-44C9-B19C-2BA608D7B116}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.GameService.Tests", "SimpleGame.GameService.Tests\SimpleGame.GameService.Tests.csproj", "{1D2F77BF-437F-44C9-B19C-2BA608D7B116}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.ComputerService.Tests", "SimpleGame.ComputerServiceApp.Tests\SimpleGame.ComputerService.Tests.csproj", "{20A8873B-A67E-418F-93ED-22E5C90317EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.ComputerService.Tests", "SimpleGame.ComputerService.Tests\SimpleGame.ComputerService.Tests.csproj", "{20A8873B-A67E-418F-93ED-22E5C90317EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGame.ScoreboardService.Tests", "SimpleGame.ScoreboardService.Tests\SimpleGame.ScoreboardService.Tests.csproj", "{C58B83C6-C2D3-47BC-9820-945B35CA6B61}"
 EndProject

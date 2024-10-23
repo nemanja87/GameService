@@ -3,7 +3,7 @@ using SimpleGame.ComputerService.Core.Application.Queries.AddComputerChoice;
 using SimpleGame.ComputerService.Core.Domain.Enum;
 using SimpleGame.ComputerService.Core.Domain.Interfaces;
 
-namespace SimpleGame.ComputerServiceApp.Tests.QueryTests
+namespace SimpleGame.ComputerService.Tests.QueryTests
 {
     public class GetComputerChoiceCommandHandlerTests
     {
