@@ -23,17 +23,6 @@ namespace SimpleGame.ComputerServiceApp.Tests.ServiceTests
         }
 
         [Fact]
-        public async Task GetRandomComputerChoiceAsync_ReturnsDifferentChoicesOverTime()
-        {
-            // Act
-            var firstChoice = await _computerChoiceService.GetRandomComputerChoiceAsync();
-            var secondChoice = await _computerChoiceService.GetRandomComputerChoiceAsync();
-
-            // Assert
-            Assert.NotEqual(firstChoice, secondChoice);
-        }
-
-        [Fact]
         public async Task GetRandomComputerChoiceAsync_ReturnsValuesWithinEnumRange()
         {
             // Act & Assert

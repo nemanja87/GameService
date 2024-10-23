@@ -1,6 +1,0 @@
-@SimpleGame.ComputerServiceApp_HostAddress = http://localhost:5198
-
-GET {{SimpleGame.ComputerServiceApp_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

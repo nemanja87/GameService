@@ -1,6 +1,0 @@
-@SimpleGame.ScoreboardServiceApp_HostAddress = http://localhost:5287
-
-GET {{SimpleGame.ScoreboardServiceApp_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
