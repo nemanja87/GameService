@@ -49,5 +49,5 @@ The `ScoreboardService` manages the game results. It keeps track of the last 10 
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/your-username/SimpleGame.git
+git clone https://github.com/nemanja87/SimpleGame.git
 cd SimpleGame

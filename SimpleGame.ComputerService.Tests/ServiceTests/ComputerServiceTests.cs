@@ -1,7 +1,7 @@
 ﻿using SimpleGame.ComputerService.Core.Application.Services;
 using SimpleGame.ComputerService.Core.Domain.Enum;
 
-namespace SimpleGame.ComputerServiceApp.Tests.ServiceTests
+namespace SimpleGame.ComputerService.Tests.ServiceTests
 {
     public class ComputerChoiceServiceTests
     {
