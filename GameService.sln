@@ -19,6 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame.ComputerService.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGame.ScoreboardService.Tests", "SimpleGame.ScoreboardService.Tests\SimpleGame.ScoreboardService.Tests.csproj", "{C58B83C6-C2D3-47BC-9820-945B35CA6B61}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{840BCDB3-FA9D-4C11-92D2-52E669AAAF22}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
