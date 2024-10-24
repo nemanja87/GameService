@@ -52,7 +52,7 @@ The `ScoreboardService` manages the game results. It keeps track of the last 10 
 git clone https://github.com/nemanja87/SimpleGame.git
 cd SimpleGame
 
-### Step 2:Solution setup
+### Step 2: Solution setup
 Make sure that all three services are up and running with https option in Visual Studio.
 Adjust appSettings with the proper localhost values if needed.
 Use `GameService` and its `play` endpoint to initiate the game. (this service makes http calls to both `Computer` and `Scoreboard` services)
